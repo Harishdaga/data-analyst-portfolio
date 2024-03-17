@@ -16,8 +16,7 @@ def fetch_data(tick, timeframe):
 ticker, hist = fetch_data(ticker_name, time_frame)
 
 st.title('Welcome to Stock market Analysis')
-options = st.sidebar.radio('Analysis', options=['News',
-                                                'stock statistic',
+options = st.sidebar.radio('Analysis', options=['stock statistic',
                                                 'stock data',
                                                 'plot data',
                                                 'Income Statement',
@@ -28,14 +27,6 @@ options = st.sidebar.radio('Analysis', options=['News',
                                                 'Recommendations'])
 
 
-def news_data(stock):
-    st.header(f'Top News')
-    for i in range(min(20, len(stock.news))):
-        st.write(ticker.news[i]['title'])
-        st.write(ticker.news[i]['publisher'])
-        st.write(ticker.news[i]['link'])
-        st.write(ticker.news[i].get('relatedTickers', ''))
-        st.write('--------------------------------------------')
 
 
 def stats(df):
@@ -115,10 +106,8 @@ def recommendations(stock):
     st.write(stock.upgrades_downgrades)
 
 
-if options == 'News':
-    news_data(ticker)
 
-elif options == 'stock statistic':
+if options == 'stock statistic':
     stats(hist)
 
 elif options == 'stock data':
